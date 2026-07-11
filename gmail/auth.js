@@ -6,7 +6,7 @@ const SCOPES = [
   "https://www.googleapis.com/auth/gmail.send",
 ];
 
-async function authorize() {
+async function authorizeGmail() {
   const auth = await authenticate({
     scopes: SCOPES,
     keyfilePath: path.join(__dirname, "../credentials.json"),
@@ -16,11 +16,8 @@ async function authorize() {
     path.join(__dirname, "../token.json"),
     JSON.stringify(auth.credentials, null, 2)
   );
-
   console.log("✅ Authorization successful");
   console.log("Token saved to token.json");
-
-  return auth;
 }
 
-authorize().catch(console.error);
+module.exports = authorizeGmail;
