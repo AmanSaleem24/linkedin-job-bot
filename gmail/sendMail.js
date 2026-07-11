@@ -1,12 +1,8 @@
-const fs = require("fs");
-const path = require("path");
 const { google } = require("googleapis");
-const retry = require("../utils/retry");
-const shouldRetry = require("./shouldRetry");
-const { RETRY } = require("../config");
+const config = require("../config");
 
-const credentials = require("../credentials.json");
-const token = require("../token.json");
+const credentials = require(config.GOOGLE_CREDENTIALS_PATH);
+const token = require(config.GOOGLE_TOKEN_PATH);
 
 async function sendMail({ to, subject, body }) {
     const { client_id, client_secret } = credentials.installed;
@@ -14,7 +10,7 @@ async function sendMail({ to, subject, body }) {
     const auth = new google.auth.OAuth2(
         client_id,
         client_secret,
-        "http://localhost"
+        config.GOOGLE_REDIRECT_URI
     );
 
     auth.setCredentials(token);

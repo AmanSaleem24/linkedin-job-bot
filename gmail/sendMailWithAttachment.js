@@ -1,15 +1,9 @@
-const fs = require("fs");
-const path = require("path");
 const { google } = require("googleapis");
 const MailComposer = require("nodemailer/lib/mail-composer");
+const config = require("../config");
 
-const resumePath = path.resolve(__dirname, "../resume/resume.pdf");
-
-console.log(resumePath);
-console.log(fs.existsSync(resumePath));
-
-const credentials = require("../credentials.json");
-const token = require("../token.json");
+const credentials = require(config.GOOGLE_CREDENTIALS_PATH);
+const token = require(config.GOOGLE_TOKEN_PATH);
 
 async function sendMailWithAttachment({
     to,
@@ -21,7 +15,7 @@ async function sendMailWithAttachment({
     const auth = new google.auth.OAuth2(
         client_id,
         client_secret,
-        "http://localhost"
+        config.GOOGLE_REDIRECT_URI
     );
 
     auth.setCredentials(token);
@@ -38,8 +32,8 @@ async function sendMailWithAttachment({
         text: body,
         attachments: [
             {
-                filename: "resume.pdf",
-                path: resumePath,
+                filename: config.RESUME_FILENAME,
+                path: config.RESUME_PATH,
             },
         ],
     });

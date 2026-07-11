@@ -10,17 +10,17 @@ const exportCsv = require("./storage/exportCsv");
 (async () => {
 
     const browser = await chromium.launch({
-        headless: false
+        headless: config.BROWSER_HEADLESS
     });
 
     try {
         const context = await browser.newContext({
-            storageState: "storage/linkedinStorageSession.json"
+            storageState: config.LINKEDIN_SESSION_PATH
         });
 
         const page = await context.newPage();
 
-        await page.goto("https://www.linkedin.com/feed/");
+        await page.goto(config.LINKEDIN_FEED_URL);
 
         await page.getByTestId("typeahead-input").fill(
             config.SEARCH_QUERY

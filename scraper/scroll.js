@@ -1,3 +1,5 @@
+const { SCROLL_TIMEOUT_MS } = require("../config");
+
 async function scroll(page) {
 
     const posts = page.locator('[role="listitem"]');
@@ -14,7 +16,7 @@ async function scroll(page) {
             },
             previousCount,
             {
-                timeout: 5000
+                timeout: SCROLL_TIMEOUT_MS
             }
         );
     } catch {

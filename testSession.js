@@ -1,17 +1,18 @@
 const { chromium } = require("playwright");
+const config = require("./config");
 
 (async () => {
   const browser = await chromium.launch({
-    headless: false,
+    headless: config.BROWSER_HEADLESS,
   });
 
   const context = await browser.newContext({
-   storageState: "storage/linkedinStorageSession.json",
+   storageState: config.LINKEDIN_SESSION_PATH,
   });
 
   const page = await context.newPage();
 
-  await page.goto("https://www.linkedin.com/feed/");
+  await page.goto(config.LINKEDIN_FEED_URL);
 
   console.log(page.url());
 

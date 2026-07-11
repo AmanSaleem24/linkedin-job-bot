@@ -1,6 +1,6 @@
 const fs = require("fs");
-const path = require("path");
 const { authenticate } = require("@google-cloud/local-auth");
+const config = require("../config");
 
 const SCOPES = [
   "https://www.googleapis.com/auth/gmail.send",
@@ -9,15 +9,15 @@ const SCOPES = [
 async function authorizeGmail() {
   const auth = await authenticate({
     scopes: SCOPES,
-    keyfilePath: path.join(__dirname, "../credentials.json"),
+    keyfilePath: config.GOOGLE_CREDENTIALS_PATH,
   });
 
   fs.writeFileSync(
-    path.join(__dirname, "../token.json"),
+    config.GOOGLE_TOKEN_PATH,
     JSON.stringify(auth.credentials, null, 2)
   );
   console.log("✅ Authorization successful");
-  console.log("Token saved to token.json");
+  console.log(`Token saved to ${config.GOOGLE_TOKEN_PATH}`);
 }
 
 module.exports = authorizeGmail;

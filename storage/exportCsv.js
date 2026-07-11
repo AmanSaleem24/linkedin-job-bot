@@ -1,15 +1,8 @@
 const fs = require("fs");
-const path = require("path");
-
-const JSON_PATH = path.join(
-    __dirname,
-    "../logs/applied.json"
-);
-
-const CSV_PATH = path.join(
-    __dirname,
-    "../logs/applications.csv"
-);
+const {
+    APPLIED_LOG_PATH,
+    APPLICATIONS_CSV_PATH
+} = require("../config");
 
 function escapeCsv(value) {
 
@@ -25,7 +18,7 @@ function escapeCsv(value) {
 
 function exportCsv() {
     const applied = JSON.parse(
-        fs.readFileSync(JSON_PATH, "utf8")
+        fs.readFileSync(APPLIED_LOG_PATH, "utf8")
     );
     const rows = [[
         "Recruiter",
@@ -56,7 +49,7 @@ function exportCsv() {
     )
     .join("\n");
 
-    fs.writeFileSync(CSV_PATH, csv);
+    fs.writeFileSync(APPLICATIONS_CSV_PATH, csv);
 
     console.log("CSV exported successfully.");
 }

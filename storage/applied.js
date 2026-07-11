@@ -1,19 +1,17 @@
 const fs = require("fs");
-const path = require("path");
-
-const LOG_PATH = path.join(__dirname, "../logs/applied.json");
+const { APPLIED_LOG_PATH } = require("../config");
 
 
 function loadApplied() {
-    if (!fs.existsSync(LOG_PATH)) {
-        fs.writeFileSync(LOG_PATH, "[]");
+    if (!fs.existsSync(APPLIED_LOG_PATH)) {
+        fs.writeFileSync(APPLIED_LOG_PATH, "[]");
     }
 
-    return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
+    return JSON.parse(fs.readFileSync(APPLIED_LOG_PATH, "utf8"));
 }
 
 function saveApplied(data) {
-    fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 4));
+    fs.writeFileSync(APPLIED_LOG_PATH, JSON.stringify(data, null, 4));
 }
 
 function alreadyApplied(id) {

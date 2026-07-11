@@ -19,6 +19,7 @@ token.json
 # LinkedIn Session
 # =========================
 storage/linkedinStorageSession.json
+storage/gmailStorageState.json
 
 # =========================
 # Logs
