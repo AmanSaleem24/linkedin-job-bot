@@ -29,11 +29,14 @@ const resumePath = process.env.RESUME_PATH
 
 module.exports = {
     SEARCH_QUERY: process.env.SEARCH_QUERY || "full stack developer intern",
+    SEARCH_QUERIES: listFromEnv("SEARCH_QUERIES"),
+    SEARCH_FLAGS: process.env.SEARCH_FLAGS || "",
 
     FILTERS: {
         all: listFromEnv("FILTER_ALL"),
         any: listFromEnv("FILTER_ANY"),
-        requireEmail: booleanFromEnv("REQUIRE_EMAIL", true)
+        requireEmail: booleanFromEnv("REQUIRE_EMAIL", true),
+        filterUsOnly: booleanFromEnv("FILTER_US_ONLY", false)
     },
 
     MAX_SCROLLS: numberFromEnv("MAX_SCROLLS", 15),
@@ -44,11 +47,18 @@ module.exports = {
         max: numberFromEnv("EMAIL_DELAY_MAX_MS", 30000)
     },
 
-    NAME: process.env.NAME || "",
-    EMAIL: process.env.EMAIL || "",
-    PHONE: process.env.PHONE || "",
-    LINKEDIN: process.env.LINKEDIN_URL || "",
+    NAME: process.env.NAME || "Aman Saleem",
+    EMAIL: process.env.EMAIL || "amansaleem9024@gmail.com",
+    PHONE: process.env.PHONE || "+91-9555303228",
+    LINKEDIN: process.env.LINKEDIN_URL || "linkedin.com/in/amansaleem",
     GITHUB: process.env.GITHUB_URL || "",
+
+    CURRENT_LOCATION: process.env.CURRENT_LOCATION || "Noida, India",
+    RELOCATION_STATUS: process.env.RELOCATION_STATUS || "Yes",
+    WORK_AUTHORIZATION: process.env.WORK_AUTHORIZATION || "Authorized to work",
+    AVAILABILITY: process.env.AVAILABILITY || "Immediate",
+    TOTAL_EXPERIENCE: process.env.TOTAL_EXPERIENCE || "0+ Years",
+    EXPECTED_SALARY: process.env.EXPECTED_SALARY || "Open",
 
     BROWSER_HEADLESS: process.env.BROWSER_HEADLESS === "true",
     LOGIN_TIMEOUT_MS: numberFromEnv("LOGIN_TIMEOUT_MS", 5 * 60 * 1000),

@@ -42,6 +42,33 @@ async function extractPost(post) {
         .digest("hex");
 
 
+    let postUrl = null;
+    try {
+        const menuBtn = post.locator('button[aria-label*="control menu"]');
+        if (await menuBtn.count() > 0) {
+            await menuBtn.click();
+            await post.page().waitForTimeout(500);
+            
+            const menuDropdown = post.page().locator('[role="menuitem"], .artdeco-dropdown__item');
+            const mCount = await menuDropdown.count();
+            for (let i = 0; i < mCount; i++) {
+                const href = await menuDropdown.nth(i).getAttribute("href");
+                if (href) {
+                    const match = href.match(/urn%3Ali%3A[a-zA-Z0-9%_-]+/i) || href.match(/urn:li:[a-zA-Z0-9_-]+/i);
+                    if (match) {
+                        const decodedUrn = decodeURIComponent(match[0]);
+                        postUrl = `https://www.linkedin.com/feed/update/${decodedUrn}/`;
+                        break;
+                    }
+                }
+            }
+            // Close the control menu by clicking it again
+            await menuBtn.click();
+        }
+    } catch (e) {
+        // ignore
+    }
+
     return {
         id,
 
@@ -57,7 +84,9 @@ async function extractPost(post) {
 
         title,
 
-        description
+        description,
+
+        postUrl
     };
 }
 

@@ -9,6 +9,7 @@ async function sendMailWithAttachment({
     to,
     subject,
     body,
+    resumePath,
 }) {
     const { client_id, client_secret } = credentials.installed;
 
@@ -33,7 +34,7 @@ async function sendMailWithAttachment({
         attachments: [
             {
                 filename: config.RESUME_FILENAME,
-                path: config.RESUME_PATH,
+                path: resumePath || config.RESUME_PATH,
             },
         ],
     });

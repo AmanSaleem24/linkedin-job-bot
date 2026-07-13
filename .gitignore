@@ -72,3 +72,4 @@ pnpm-debug.log*
 # =========================
 *.tmp
 *.log
+scratch/

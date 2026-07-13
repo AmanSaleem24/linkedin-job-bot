@@ -17,9 +17,17 @@ function escapeCsv(value) {
 }
 
 function exportCsv() {
-    const applied = JSON.parse(
-        fs.readFileSync(APPLIED_LOG_PATH, "utf8")
-    );
+    let applied = [];
+    try {
+        if (fs.existsSync(APPLIED_LOG_PATH)) {
+            const content = fs.readFileSync(APPLIED_LOG_PATH, "utf8").trim();
+            if (content) {
+                applied = JSON.parse(content);
+            }
+        }
+    } catch (err) {
+        console.warn("⚠️  Failed to parse applied.json during CSV export:", err.message);
+    }
     const rows = [[
         "Recruiter",
         "Email",

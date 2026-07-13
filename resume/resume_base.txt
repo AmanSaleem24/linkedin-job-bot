@@ -1,0 +1,61 @@
+Aman Saleem
+
+Software Engineer | DSA & Full Stack Developer (MERN)
+ +91-9555303228
+
+# amansaleem9024@gmail.com
+
+ï linkedin.com/in/amansaleem
+
+Summary
+Software Engineering student with strong problem-solving skills in Data Structures and Algorithms and hands-on
+experience in full-stack development (MERN, Next.js). Built scalable systems involving real-time communication
+and cloud-based media pipelines. Seeking software engineering roles in product-based companies.
+
+Skills
+Programming: Java, JavaScript, C, Rust (Basics)
+Web Development: React.js, Next.js, Node.js, Express.js, REST API Development, MongoDB
+Databases: PostgreSQL, SQL
+Core Concepts: Data Structures & Algorithms, OOP (Object-Oriented Programming), DBMS, Operating
+Systems, Problem Solving, Logical Thinking
+Tools & Technologies: Git, GitHub, Version Control, Postman, Docker (Basics), GitHub Actions (CI/CD), AWS
+(EC2), NGINX, PM2, SSH, Debugging, Documentation
+
+Projects
+ClipFlow | Electron, Next.js, Express (WebSockets), AWS S3, CloudFront | Live Demo
+
+– Built a real-time screen recording and streaming system using Electron with a custom desktop-to-cloud pipeline.
+– Implemented WebSocket-based communication between Electron and Express for controlled session management.
+– Designed a scalable media pipeline: local recording → AWS S3 → CloudFront CDN delivery.
+– Used stream-based recording to handle large media efficiently without memory bottlenecks.
+– Automated upload, processing, and cleanup workflows for reliable end-to-end execution.
+Polaris | Full Stack (Next.js, MERN, Clerk, GitHub API) | Live Demo
+
+– Built a web-based AI development workspace integrating GitHub repositories, enabling users to import and
+interact with projects inside a browser-based IDE.
+– Implemented repository parsing and file tree rendering to replicate a VS Code-like structure for seamless code
+navigation.
+– Integrated context-aware AI assistant capable of understanding full project state and providing in-place assistance
+during development.
+– Enabled real-time preview for React/Next.js applications, allowing users to visualize changes alongside code
+interaction.
+– Developed secure authentication and GitHub linking using Clerk and OAuth to manage user sessions and repository
+access.
+
+Coding Profiles
+• Solved 400+ DSA problems on LeetCode, GeeksforGeek and CodeChef.
+• Proficient in arrays, trees, graphs, and dynamic programming.
+
+Education
+B.Tech in Computer Science and Engineering
+
+2023 – 2027
+
+JSS Academy of Technical Education
+
+Class XII (ISC Board)
+City Children’s Academy
+
+Percentage: 89.5%
+
+
