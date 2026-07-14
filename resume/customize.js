@@ -68,7 +68,6 @@ async function customizeResume(job, outputPath, cleanedJobTitle = null) {
     const targetTitle = cleanedJobTitle || job.title;
 
     try {
-        console.log(`🤖 Requesting Gemini to customize resume for: "${targetTitle}"...`);
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite" });
 
@@ -347,9 +346,7 @@ Return ONLY the raw HTML source code starting with <!DOCTYPE html>. Do not wrap 
         const responseText = result.response.text();
         const htmlContent = cleanGeminiHtml(responseText);
 
-        console.log("🎨 Rendering customized HTML to PDF...");
         await renderHtmlToPdf(htmlContent, outputPath);
-        console.log(`✅ Customized resume successfully generated at: ${outputPath}`);
 
         return outputPath;
 

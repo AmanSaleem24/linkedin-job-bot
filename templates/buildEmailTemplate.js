@@ -28,6 +28,7 @@ Here is a summary of my profile for your quick review:
 Below are the details of the post I am applying to:
 - LinkedIn Post URL: ${postUrlText}
 -----------------------------------------
+
 Job Post Description:
 ${job.description}
 -----------------------------------------

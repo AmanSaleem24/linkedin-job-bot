@@ -96,17 +96,19 @@ const exportCsv = require("./storage/exportCsv");
                     skipped++;
                 }
 
-                const delay =
-                    Math.floor(
-                        Math.random() *
-                        (config.EMAIL_DELAY.max - config.EMAIL_DELAY.min + 1)
-                    ) + config.EMAIL_DELAY.min;
+                if (config.EMAIL_DELAY.enabled) {
+                    const delay =
+                        Math.floor(
+                            Math.random() *
+                            (config.EMAIL_DELAY.max - config.EMAIL_DELAY.min + 1)
+                        ) + config.EMAIL_DELAY.min;
 
-                console.log(
-                    `Waiting ${Math.round(delay / 1000)} seconds before next job...`
-                );
+                    console.log(
+                        `Waiting ${Math.round(delay / 1000)} seconds before next job...`
+                    );
 
-                await sleep(delay);
+                    await sleep(delay);
+                }
 
             } catch (err) {
                 failed++;

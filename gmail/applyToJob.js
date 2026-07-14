@@ -24,7 +24,6 @@ async function applyToJob(job) {
     console.log(`Post URL:      ${job.postUrl || "N/A"}`);
 
     if (alreadyApplied(job)) {
-        console.log(`Status:        SKIPPED (Already Applied)`);
         console.log("-".repeat(50));
         return false;
     }
@@ -37,7 +36,6 @@ async function applyToJob(job) {
     console.log(`US Job:        ${extractedDetails.isUS ? "YES" : "NO"}`);
 
     if (FILTERS.filterUsOnly && !extractedDetails.isUS) {
-        console.log(`Status:        SKIPPED (Not located in USA)`);
         console.log("-".repeat(50));
         return false;
     }
@@ -56,6 +54,8 @@ async function applyToJob(job) {
     try {
         resumePathToAttach = await customizeResume(job, tempResumePath, extractedDetails.cleanedJobTitle);
 
+        console.log("");
+        console.log(`Sending email to ${recipientEmail}...`);
         await retry(
             () =>
                 sendMailWithAttachment({
@@ -72,13 +72,13 @@ async function applyToJob(job) {
         
         markApplied(job);
 
-        console.log(`Status:        SENT SUCCESSFULLY`);
+        console.log(`Result: SENT SUCCESSFULLY`);
         console.log("-".repeat(50));
 
         return true;
 
     } catch (err) {
-        console.log(`Status:        FAILED (${err.message})`);
+        console.log(`Result: FAILED (${err.message})`);
         console.log("-".repeat(50));
         return false;
 
@@ -87,7 +87,6 @@ async function applyToJob(job) {
         if (resumePathToAttach === tempResumePath && fs.existsSync(tempResumePath)) {
             try {
                 fs.unlinkSync(tempResumePath);
-                console.log(`🧹 Cleaned up temporary resume at: ${tempResumePath}`);
             } catch (cleanupErr) {
                 console.error(`⚠️ Failed to delete temporary resume:`, cleanupErr.message);
             }

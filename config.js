@@ -43,8 +43,9 @@ module.exports = {
     TARGET_EMAILS: numberFromEnv("TARGET_EMAILS", 20),
 
     EMAIL_DELAY: {
-        min: numberFromEnv("EMAIL_DELAY_MIN_MS", 15000),
-        max: numberFromEnv("EMAIL_DELAY_MAX_MS", 30000)
+        enabled: booleanFromEnv("EMAIL_DELAY_ENABLED", false),
+        min: numberFromEnv("EMAIL_DELAY_MIN_MS", 0),
+        max: numberFromEnv("EMAIL_DELAY_MAX_MS", 0)
     },
 
     NAME: process.env.NAME || "Aman Saleem",
